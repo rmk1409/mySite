@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>Пример конструктора в js. Смотри консоль.</p>
+	<p><b>!</b> Если перед запуском любой функции в js поставиль new, то this внутри неё будет ссылаться на создоваемый обьект.</p>
+	<script>
+		var Human = function(opt){
+			//публичные поля
+			this.name = opt.name || 'Иван';
+			this.family = opt.family || 'Иванов';
+			this.age = opt.age || 0;
+
+			//приватные поля
+			var prvtCreditCard = opt.creditCard || '3222 2222 2223 2332';
+
+			//до приватных можно достучаться только если метод объявлен вот так, в конструкторе
+			this.checkCreditCard = function(creditCardNo){
+				if(creditCardNo == prvtCreditCard){
+					console.log("Угадал! #" + prvtCreditCard);
+				}else{
+					console.log("Не угадал. Номер кредитки не " + creditCardNo + " :(");
+				}
+			}
+		};
+
+		//если в методе нет обращения к приватным методам то лучше написать так
+		//так будет быстрее работать если создавать много экземпляров
+		Human.prototype.about = function(){
+			console.log("Меня зовут " + this.name + " " + this.family + " мне " + this.age + " лет");
+		}
+
+		var alex = new Human({
+			name: "Alex",
+			age: 27,
+			creditCard: "0001 2345 6789 0000"
+		});
+		console.log(alex);
+		alex.about();
+		alex.checkCreditCard('123');
+		alex.checkCreditCard('3222 2222 2223 2332');
+		alex.checkCreditCard('0001 2345 6789 0000');
+
+		var human = new Human({});
+		console.log(human);
+		human.about();
+		human.checkCreditCard('123');
+		human.checkCreditCard('0001 2345 6789 0000');
+		human.checkCreditCard('3222 2222 2223 2332');
+
+	</script>
+</body>
+</html>
