@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ex 1</title>
+</head>
+<body>
+	<input type="text" placeholder="input here"/>
+	<button>clik me</button>
+	<ul></ul>
+	<script src="lib/jquery-1.11.2.js"></script>
+	<script>
+		$(function(){
+			
+			$('button').bind('click', function(){
+				var text = $('input').val();
+				if($.trim(text)!==""){	
+					$('ul').append('<li>'+text+'</li>');
+					$('input').val('');
+				}
+			});
+
+			console.log("11"==11);
+			console.log("12"==11);
+			console.log("11"=="11");
+			console.log("11"===11);
+
+		    $.ajax({
+		    	type: "GET",
+				dataType: "json",//text
+			    url: 'data.json',
+			    data: {
+			    	name: "aaa"
+			    }
+		    }).done(function(resp) {
+				console.log(resp);
+			}).fail(function() {
+				console.log( "error" );
+			});
+		});
+	</script>
+</body>
+</html>

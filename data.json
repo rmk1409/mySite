@@ -1,0 +1,14 @@
+{
+	"name":"Alex",
+	"age":10,
+	"frends": [
+		{
+			"name":	"Mike",
+			"age": 11
+		},
+		{
+			"name": "Sara",
+			"age": 14
+		}
+	]
+}
