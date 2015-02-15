@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ex 2</title>
+</head>
+<body>
+	<div class="card">
+		<h1>Mike</h1>
+	</div>
+	<div class="card">
+		<h1>Mike</h1>
+	</div>
+	<div class="card">
+		<h1>Mike</h1>
+	</div>
+	<div class="card">
+		<h1>Mike</h1>
+	</div>
+
+	<script src="lib/jquery-1.11.2.js"></script>
+	<script>
+		$(function(){
+			// $('.card h1').each(function(){
+			// 	var $h1 = $(this);
+			// 	$h1.click(function(){
+			// 		$.ajax({
+			// 			type: "GET",
+			// 			dataType: "json",
+			// 			url: 'data2.json'
+			// 		}).done(function(resp){
+			// 			console.log(this);
+			// 			$h1.text(resp.name);
+			// 		});
+			// 	});
+			// });
+			$('.card h1').click(function(){
+				var $h1 = $(this);
+				$.ajax({
+					type: "GET",
+					dataType: "json",
+					url: 'data2.json'
+				}).done(function(resp){
+					$h1.text(resp.name);
+				});
+			});
+		});
+	</script>
+</body>
+</html>
